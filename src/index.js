@@ -1,25 +1,20 @@
 //template ejs
-const express = require("express"); //commonjs
-const path = require("path");
 require("dotenv").config();
-const app = express(); //app express
-
-//config template engine
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+//commonjs
+const express = require("express");
+//app express
+const app = express();
+const configViewEngine = require("./config/viewEngine");
+const router = require("./routes/web");
 
 //init port
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
 
-//khai bao route
-app.get("/", (req, res) => {
-  res.send("Hello Huy!");
-});
+configViewEngine(app);
 
-app.get("/route2", (req, res) => {
-  res.render("sample.ejs");
-});
+app.use("/user", router);
+app.use("/admin", router);
 
 app.listen(port, hostname, () => {
   console.log(
