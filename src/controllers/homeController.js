@@ -1,5 +1,12 @@
+const { json } = require("express");
+const connection = require("../config/database");
+
 const getHomepage = (req, res) => {
-  res.send("Hello Huy!");
+  let users = [];
+  connection.query("select * from Users u", function (err, result, fields) {
+    users = result;
+    res.send(JSON.stringify(users));
+  });
 };
 
 const getRoute2 = (req, res) => {
