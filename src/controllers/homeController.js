@@ -10,15 +10,20 @@ const getHomepage = (req, res) => {
 };
 
 const getRoute2 = (req, res) => {
-  res.render("sample.ejs");
+  return res.render("home.ejs");
 };
 
 const getRoute3 = (req, res) => {
   res.send("TỚ NHỚ CẬU");
 };
 
+const addUser = (req, res) => {
+  res.send("aaa");
+};
+
 module.exports = {
   getHomepage,
   getRoute2,
   getRoute3,
+  addUser,
 };
