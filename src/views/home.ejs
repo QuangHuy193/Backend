@@ -21,6 +21,16 @@
       tr:hover {
         background-color: #85efef;
       }
+
+      .title {
+        margin: 10px auto;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 600;
+      }
+      .table_container {
+        padding: 15px 20px;
+      }
     </style>
   </head>
   <body>
@@ -30,32 +40,30 @@
       <!-- <a href="#contact">Contact</a>
       <a href="#about">About</a> -->
     </div>
-    <table>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Points</th>
-      </tr>
-      <tr>
-        <td>Peter</td>
-        <td>Griffin</td>
-        <td>$100</td>
-      </tr>
-      <tr>
-        <td>Lois</td>
-        <td>Griffin</td>
-        <td>$150</td>
-      </tr>
-      <tr>
-        <td>Joe</td>
-        <td>Swanson</td>
-        <td>$300</td>
-      </tr>
-      <tr>
-        <td>Cleveland</td>
-        <td>Brown</td>
-        <td>$250</td>
-      </tr>
-    </table>
+    <div class="table_container">
+      <%JSON.stringify(listUsers) %>
+      <div class="title">List User</div>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>Actions</th>
+        </tr>
+        <% listUsers.forEach(function(user, index){ %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.name %></td>
+          <td><%= user.city %></td>
+          <td>
+            <button>Edit</button>
+            <button>Delete</button>
+          </td>
+        </tr>
+        <% }) %>
+      </table>
+    </div>
   </body>
 </html>
