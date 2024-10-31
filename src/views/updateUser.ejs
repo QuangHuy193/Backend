@@ -3,32 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add user</title>
+    <title>Edit user</title>
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
+    <% JSON.stringify(user) %>
     <div class="topnav">
       <a href="/">Home</a>
-      <a class="active" href="/addUser">Create users</a>
+      <a href="/user">Create users</a>
       <!-- <a href="#contact">Contact</a>
       <a href="#about">About</a> -->
     </div>
     <div class="form_addUser">
-      <form action="/handelAddUser" method="post">
+      <form action="/handelUpdateUser" method="post">
         <fieldset>
-          <legend>ADD USER</legend>
+          <legend>UPDATE USER</legend>
           <table>
+            <tr class="no_display">
+              <td></td>
+              <td>
+                <input type="text" name="userId" value="<%= user.id%>" />
+              </td>
+            </tr>
             <tr>
               <td><label> Email: </label></td>
-              <td><input type="text" name="email" /></td>
+              <td>
+                <input type="text" name="email" value="<%= user.email%>" />
+              </td>
             </tr>
             <tr>
               <td><label> Họ và tên: </label></td>
-              <td><input type="text" name="username" /></td>
+              <td>
+                <input type="text" name="username" value="<%= user.name%>" />
+              </td>
             </tr>
             <tr>
               <td><label> Thành phố: </label></td>
-              <td><input type="text" name="city" /></td>
+              <td>
+                <input type="text" name="city" value="<%= user.city%>" />
+              </td>
             </tr>
             <tr>
               <td colspan="2">
