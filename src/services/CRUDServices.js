@@ -27,7 +27,15 @@ const updateUserToDB = async (email, name, city, id) => {
     `update Users set email = ?, name = ?, city = ? where id = ?`,
     [email, name, city, id]
   );
-  console.log(">>>>>>> " + results.affectedRows);
+  //console.log(">>>>>>> " + results.affectedRows);
+  return results.affectedRows;
+};
+
+const deleteUserToDB = async (id) => {
+  const [results, fields] = await connection.query(
+    `delete from Users where id = ?`,
+    [id]
+  );
   return results.affectedRows;
 };
 module.exports = {
@@ -35,4 +43,5 @@ module.exports = {
   getUserById,
   addUserToDB,
   updateUserToDB,
+  deleteUserToDB,
 };

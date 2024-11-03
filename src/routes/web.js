@@ -6,6 +6,8 @@ const {
   handelAddUser,
   updateUser,
   handelUpdateUser,
+  deleteUser,
+  handelDeleteUser,
 } = require("../controllers/homeController");
 
 //khai bao route
@@ -19,5 +21,9 @@ router.post("/handelAddUser", handelAddUser);
 router.get("/updateUser/:id", updateUser);
 //xu ly update user
 router.post("/handelUpdateUser", handelUpdateUser);
+//goi trang delete user
+router.post("/deleteUser/:id", deleteUser);
+//xu ly delete user
+router.post("/handelDeleteUser", handelDeleteUser);
 
 module.exports = router;

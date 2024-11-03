@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete user</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="/">Home</a>
+      <a href="/user">Create users</a>
+      <!-- <a href="#contact">Contact</a>
+      <a href="#about">About</a> -->
+    </div>
+    <% JSON.stringify(user) %>
+    <div class="form_addUser">
+      <form action="/handelDeleteUser" method="post">
+        <fieldset>
+          <legend>DELETE USER</legend>
+          <table>
+            <tr class="no_display">
+              <td></td>
+              <td>
+                <input type="text" name="userId" value="<%= user.id %>" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label> Are you sure to delete this user with email? </label>
+              </td>
+              <td>
+                <input type="text" name="email" value="<%= user.email %>" />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <button class="btnsubmit" type="submit">Confirm</button>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </form>
+    </div>
+  </body>
+</html>

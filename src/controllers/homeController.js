@@ -5,6 +5,7 @@ const {
   getUserById,
   addUserToDB,
   updateUserToDB,
+  deleteUserToDB,
 } = require("../services/CRUDServices");
 
 const getHomepage = async (req, res) => {
@@ -48,6 +49,21 @@ const handelUpdateUser = async (req, res) => {
     return res.send("can't update user success");
   }
 };
+const deleteUser = async (req, res) => {
+  const user = await getUserById(req.params.id);
+
+  return res.render("deleteUser.ejs", { user: user });
+};
+
+const handelDeleteUser = async (req, res) => {
+  let id = req.body.userId;
+  let results = await deleteUserToDB(id);
+  if (results == 1) {
+    return res.send("Delete user success");
+  } else {
+    return res.send("Delete can't user success");
+  }
+};
 
 module.exports = {
   getHomepage,
@@ -55,4 +71,6 @@ module.exports = {
   handelAddUser,
   updateUser,
   handelUpdateUser,
+  deleteUser,
+  handelDeleteUser,
 };
